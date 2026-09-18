@@ -582,17 +582,18 @@
 
       // ========================================================
       // 3. CASHBACK REWARD ENGINE
-      // - Randomly assigns ₹10, ₹20, or ₹30 per session
+      // - 30 is present exactly 6 times in a pool of 100 entries (6% chance)
       // ========================================================
       function generateReward() {
-        const roll = Math.random();
-        if (roll < 0.34) {
-          return 10;
-        } else if (roll < 0.67) {
-          return 20;
-        } else {
-          return 30;
-        }
+        const rewards = [
+          // 6 entries of 30
+          30, 30, 30, 30, 30, 30,
+          // Remaining 94 entries distributed between 10 and 20
+          10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+          20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20
+        ];
+        const randomIndex = Math.floor(Math.random() * rewards.length);
+        return rewards[randomIndex];
       }
 
       function generateVoucherCode(amount) {
