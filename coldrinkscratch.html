@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Cold Drink Cashback Scheme - Thums Up & Sprite Special</title>
+
+  <!-- External Styles & Confetti -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Google Fonts: Poppins, Space Mono & Chilled Heavy Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Space+Mono:wght@700&family=Teko:wght@700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind Configuration for Thums Up & Sprite Brand Colors -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            spriteGreen: {
+              400: '#20E070',
+              500: '#00C853',
+              600: '#00A859',
+              700: '#007A3D',
+            },
+            thumsUpRed: {
+              500: '#EE1C25',
+              600: '#D32F2F',
+              700: '#B71C1C',
+            },
+            thumsUpBlue: {
+              700: '#0277BD',
+              800: '#01579B',
+              900: '#0A192F',
+            },
+            sodaYellow: '#FFEB3B',
+            ticketIvory: '#F4FBF7',
+          },
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+            display: ['Teko', 'sans-serif'],
+            royal: ['Cinzel', 'serif'],
+            mono: ['Space Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    @keyframes floatSoft {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.8; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.04); }
+    }
+    @keyframes shimmerSprite {
+      0% { transform: translateX(-150%); }
+      100% { transform: translateX(150%); }
+    }
+    
+    .chilled-bg {
+      background-color: #081C15;
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(0, 200, 83, 0.18) 0%, transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(238, 28, 37, 0.18) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(2, 119, 189, 0.15) 0%, transparent 55%),
+        radial-gradient(#1B4332 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 20px 20px;
+    }
+
+    .shimmer-badge {
+      position: relative;
+      overflow: hidden;
+    }
+    .shimmer-badge::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+      transform: translateX(-150%);
+      animation: shimmerSprite 2.8s infinite ease-in-out;
+      pointer-events: none;
+    }
+
+    .ticket-scallop-left, .ticket-scallop-right {
+      position: absolute;
+      top: 50%;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background-color: #081C15;
+      transform: translateY(-50%);
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+      z-index: 10;
+    }
+    .ticket-scallop-left { left: -11px; }
+    .ticket-scallop-right { right: -11px; }
+
+    canvas#scratchCanvas {
+      touch-action: none;
+      cursor: grab;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    canvas#scratchCanvas:active {
+      cursor: grabbing;
+    }
+  </style>
+</head>
+
+<body class="chilled-bg text-slate-100 min-h-screen flex flex-col font-sans selection:bg-spriteGreen-500 selection:text-white relative overflow-x-hidden">
+
+  <!-- Refreshing Top Banner -->
+  <header class="w-full bg-gradient-to-r from-thumsUpRed-600 via-spriteGreen-600 to-thumsUpBlue-800 text-white py-1.5 px-4 shadow-md select-none">
+    <div class="max-w-3xl mx-auto flex items-center justify-between text-xs sm:text-sm font-semibold">
+      <div class="flex items-center gap-1.5">
+        <span class="text-base">👍</span>
+        <span class="tracking-wide">THUMS UP x SPRITE SPECIAL</span>
+      </div>
+      <div class="flex items-center gap-1 text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-black/30 px-2.5 py-0.5 rounded-full backdrop-blur-sm border border-white/20">
+        <span>COLD DRINK REFRESHMENT</span>
+        <span class="text-lime-300">🍋</span>
+      </div>
+      <div class="hidden sm:flex items-center gap-1.5 text-xs">
+        <span class="font-bold">CHILLED SAVINGS</span>
+        <span class="text-base">🧊</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Layout -->
+  <main class="flex-1 max-w-xl w-full mx-auto px-4 py-4 sm:py-6 flex flex-col items-center justify-start relative z-10">
+
+    <!-- COLD DRINK LOGO (Sprite + Thums Up Theme Vector) -->
+    <div class="w-full flex flex-col items-center text-center my-1">
+      <div class="relative w-full max-w-[340px] sm:max-w-[380px]">
+        <svg viewBox="0 0 460 175" class="w-full h-auto drop-shadow-lg select-none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <!-- Sprite Lime-Green Gradient -->
+            <linearGradient id="spriteGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#76FF03" />
+              <stop offset="50%" stop-color="#00E676" />
+              <stop offset="100%" stop-color="#00A859" />
+            </linearGradient>
+
+            <!-- Thums Up Red-Blue Gradient -->
+            <linearGradient id="thumsRedGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#FF1744" />
+              <stop offset="50%" stop-color="#D50000" />
+              <stop offset="100%" stop-color="#990000" />
+            </linearGradient>
+
+            <linearGradient id="blueSheen" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#00B0FF" />
+              <stop offset="100%" stop-color="#0277BD" />
+            </linearGradient>
+
+            <!-- Chilled Shield Gradient -->
+            <linearGradient id="chilledShield" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#1E3A8A" />
+              <stop offset="100%" stop-color="#0F172A" />
+            </linearGradient>
+          </defs>
+
+          <!-- Sparkling Soda Bubbles -->
+          <g>
+            <circle cx="218" cy="38" r="7" fill="#76FF03" opacity="0.8" />
+            <circle cx="248" cy="25" r="11" fill="#00E676" opacity="0.6" />
+            <circle cx="278" cy="20" r="8" fill="#FF1744" opacity="0.7" />
+            <circle cx="230" cy="54" r="5" fill="#00B0FF" opacity="0.9" />
+            <circle cx="310" cy="35" r="9" fill="#FFEB3B" opacity="0.7" />
+          </g>
+
+          <!-- Thums Up Symbol Shield (Thumbs Up + Soda Splash) -->
+          <g>
+            <!-- Outer Shield -->
+            <path d="M 270 36 Q 308 30 346 36 C 346 64 332 94 308 106 C 284 94 270 64 270 36 Z" fill="url(#chilledShield)" stroke="url(#spriteGrad)" stroke-width="4.5" stroke-linejoin="round" />
+            <path d="M 276 40 Q 308 35 340 40 C 340 63 328 88 308 98 C 288 88 276 63 276 40 Z" fill="none" stroke="#FF1744" stroke-width="2.5" opacity="0.9" />
+
+            <!-- Thums Up Icon inside shield -->
+            <text x="308" y="76" font-family="'Poppins', sans-serif" font-size="34" font-weight="900" fill="url(#spriteGrad)" text-anchor="middle">👍</text>
+
+            <!-- Dynamic Soda Splash Bolt -->
+            <polyline points="280,88 298,66 314,80 348,36" fill="none" stroke="#FF1744" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
+            <polygon points="340,30 366,32 354,58" fill="#FF1744" />
+
+            <polyline points="280,88 298,66 314,80 348,36" fill="none" stroke="url(#spriteGrad)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+            <polygon points="343,33 363,35 353,55" fill="url(#spriteGrad)" />
+          </g>
+
+          <!-- Brand Typography: "COLD" -->
+          <text x="135" y="86" font-family="'Poppins', sans-serif" font-size="54" font-style="italic" font-weight="900" fill="url(#thumsRedGrad)" letter-spacing="1">COLD</text>
+
+          <!-- Brand Typography: "DRINK" -->
+          <text x="145" y="128" font-family="'Poppins', sans-serif" font-size="54" font-style="italic" font-weight="900" fill="url(#spriteGrad)" letter-spacing="2">DRINK</text>
+
+          <!-- Sub-brand Tagline -->
+          <g transform="translate(142, 134)">
+            <path d="M -10 16 Q -28 15 -34 6" fill="none" stroke="#00E676" stroke-width="3" stroke-linecap="round" />
+            <polygon points="-36,2 -30,8 -36,10" fill="#00E676" />
+
+            <!-- Word REFRESHMENT -->
+            <text x="75" y="18" font-family="'Poppins', sans-serif" font-size="24" font-style="italic" font-weight="900" fill="url(#blueSheen)" letter-spacing="3" text-anchor="middle">REFRESHMENT</text>
+
+            <path d="M -16 25 L 155 25 Q 170 25 178 16" fill="none" stroke="url(#thumsRedGrad)" stroke-width="4.5" stroke-linecap="round" />
+            <polygon points="174,12 184,14 179,24" fill="#FF1744" />
+          </g>
+        </svg>
+      </div>
+
+      <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-950/80 border border-spriteGreen-500 text-spriteGreen-400 text-[11px] sm:text-xs font-bold tracking-wide mt-1 shadow-sm">
+        <span>👍</span>
+        <span>THUMS UP &amp; SPRITE CASHBACK SCHEME</span>
+        <span>🍋</span>
+      </div>
+
+      <!-- STRICT ONE-TIME RULE BANNER -->
+      <div class="mt-2 inline-flex items-center gap-1.5 px-3 py-0.5 rounded-md bg-red-950/80 border border-thumsUpRed-500 text-red-300 text-[11px] font-semibold">
+        <span class="w-2 h-2 rounded-full bg-thumsUpRed-500 animate-pulse"></span>
+        <span>Strictly 1 Scratch &amp; 1 Coupon Per Customer / Device</span>
+      </div>
+    </div>
+
+    <!-- VIEW A: ACTIVE UNCLAIMED SCRATCH CARD CONTAINER -->
+    <div id="unclaimedCardView" class="w-full max-w-[380px] mx-auto mt-3 flex flex-col items-center">
+      
+      <!-- Outer Card with Chilled Sprite/ThumsUp Rim -->
+      <div class="w-full p-2.5 rounded-[26px] bg-gradient-to-br from-spriteGreen-500 via-thumsUpBlue-700 to-thumsUpRed-600 shadow-[0_12px_36px_-10px_rgba(0,200,83,0.4)]">
+        
+        <!-- Inner Card Body -->
+        <div class="relative w-full rounded-[20px] overflow-hidden bg-slate-900 border border-spriteGreen-400 aspect-[4/3.1] min-h-[275px] select-none shadow-inner">
+
+          <!-- UNDERNEATH: PRIZE CONTENT -->
+          <div id="prizeSecretContent" class="absolute inset-0 p-4 flex flex-col items-center justify-between text-center bg-gradient-to-b from-slate-900 via-emerald-950 to-slate-900 z-0">
+            
+            <div class="w-full flex items-center justify-between border-b border-emerald-800/60 pb-1">
+              <span class="text-[11px] font-extrabold tracking-wider text-spriteGreen-400 flex items-center gap-1">
+                <span>👍</span> COLD DRINK
+              </span>
+              <span class="text-[10px] font-extrabold uppercase text-amber-300 bg-thumsUpRed-700 px-2 py-0.5 rounded-full border border-thumsUpRed-500">
+                THUMS UP / SPRITE
+              </span>
+            </div>
+
+            <!-- Value Display -->
+            <div class="flex-1 flex flex-col items-center justify-center my-0.5">
+              <span class="text-2xl mb-0.5">🥤</span>
+              <p class="text-[11px] font-extrabold uppercase tracking-widest text-spriteGreen-400">
+                Congratulations! You Won
+              </p>
+              
+              <div class="flex items-center justify-center my-0.5">
+                <span id="prizeAmountText" class="text-6xl sm:text-7xl font-black font-royal tracking-tight bg-gradient-to-br from-spriteGreen-400 via-yellow-300 to-thumsUpRed-500 bg-clip-text text-transparent drop-shadow-md">
+                  ₹00
+                </span>
+              </div>
+
+              <div class="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-300 bg-emerald-900/60 px-2.5 py-0.5 rounded-full border border-emerald-500">
+                <svg class="w-3.5 h-3.5 text-spriteGreen-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>Instant Cold Drink Counter Discount</span>
+              </div>
+            </div>
+
+            <!-- Footer Code Snippet -->
+            <div class="w-full pt-1.5 border-t border-dashed border-emerald-700/60 flex items-center justify-between bg-slate-950/80 -mx-4 -mb-4 px-4 py-2">
+              <div class="text-left">
+                <p class="text-[9px] font-bold text-slate-400 uppercase">Coupon Code</p>
+                <p id="previewVoucherCode" class="text-xs font-mono font-black text-lime-400">CD-SPTU-XXXX</p>
+              </div>
+              <span class="text-[10px] font-bold text-slate-200 bg-thumsUpBlue-800 px-2 py-0.5 rounded border border-thumsUpBlue-700">
+                Valid at Counter
+              </span>
+            </div>
+
+          </div>
+
+          <!-- TOP SCRATCH FOIL CANVAS -->
+          <canvas id="scratchCanvas" class="absolute inset-0 w-full h-full z-10 transition-opacity duration-500"></canvas>
+
+          <!-- Animated Scratch Hint Pill -->
+          <div id="scratchPrompt" class="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 pointer-events-none flex items-center gap-1 px-3 py-1 rounded-full bg-slate-950/90 border border-spriteGreen-400 text-spriteGreen-300 text-xs font-semibold shadow-md animate-bounce">
+            <span>🪙</span>
+            <span>Scratch with finger or mouse</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Scratch Progress & Quick Action -->
+      <div class="w-full mt-3 flex flex-col gap-2">
+        <div class="w-full flex items-center justify-between text-xs px-1 font-semibold text-slate-300">
+          <span id="scratchPercentageText">0% Scratched</span>
+          <span class="text-[11px] text-spriteGreen-400 font-medium">Auto-reveals at 45%</span>
+        </div>
+
+        <div class="w-full bg-slate-800 rounded-full h-2 p-0.5 border border-slate-700 overflow-hidden shadow-inner">
+          <div id="scratchProgressBar" class="bg-gradient-to-r from-spriteGreen-500 via-yellow-400 to-thumsUpRed-500 h-full rounded-full transition-all duration-150" style="width: 0%"></div>
+        </div>
+
+        <!-- Single Auto Reveal Button -->
+        <button id="quickRevealBtn" class="w-full mt-1 py-2.5 px-4 rounded-xl bg-gradient-to-r from-spriteGreen-600 to-thumsUpBlue-800 hover:from-spriteGreen-500 hover:to-thumsUpBlue-700 text-white border border-spriteGreen-400 text-xs font-bold tracking-wider uppercase transition-all shadow-md active:scale-95 flex items-center justify-center gap-2">
+          <svg class="w-4 h-4 text-lime-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+          </svg>
+          <span>Tap for Quick Scratch &amp; Reveal</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- VIEW B: PERMANENT CLAIMED COUPON TICKET -->
+    <div id="claimedCouponView" class="hidden w-full max-w-[390px] mx-auto mt-2 flex flex-col items-center">
+      
+      <!-- Success Notification Badge -->
+      <div class="w-full mb-3 flex items-center justify-center gap-2 py-2 px-3 bg-emerald-950/80 border border-spriteGreen-500 rounded-xl shadow-xs">
+        <span class="text-base">🎉</span>
+        <div class="text-left">
+          <p class="text-xs font-black text-spriteGreen-400 leading-tight">Cold Drink Coupon Unlocked!</p>
+          <p class="text-[10px] text-emerald-300">1-Time Scratch Completed on this Device</p>
+        </div>
+      </div>
+
+      <!-- Perforated Physical Ticket Body -->
+      <div class="relative w-full rounded-2xl bg-slate-900 border-2 border-spriteGreen-500 shadow-[0_12px_36px_-8px_rgba(0,200,83,0.3)] overflow-hidden">
+        
+        <!-- Scallop Ticket Cutouts -->
+        <div class="ticket-scallop-left"></div>
+        <div class="ticket-scallop-right"></div>
+
+        <!-- Ticket Top Section -->
+        <div class="p-4 sm:p-5 bg-gradient-to-b from-emerald-950 via-slate-900 to-slate-900 border-b border-dashed border-spriteGreen-600">
+          
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-1.5">
+              <span class="text-lg">🥤</span>
+              <div>
+                <h3 class="text-xs font-black text-spriteGreen-400 uppercase tracking-wider">Cold Drink Special</h3>
+                <p class="text-[9px] font-semibold text-thumsUpRed-500">Thums Up &amp; Sprite Voucher</p>
+              </div>
+            </div>
+
+            <!-- Holographic Security Seal -->
+            <div class="shimmer-badge w-12 h-12 rounded-full border border-spriteGreen-400 bg-gradient-to-br from-spriteGreen-600 via-thumsUpBlue-800 to-thumsUpRed-600 flex flex-col items-center justify-center shadow-xs text-center">
+              <span class="text-xs">👍</span>
+              <span class="text-[7px] font-extrabold text-white uppercase leading-none mt-0.5">VERIFIED</span>
+            </div>
+          </div>
+
+          <!-- Cashback Value -->
+          <div class="my-3 text-center">
+            <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Guaranteed Cashback Amount</p>
+            <div class="text-6xl sm:text-7xl font-black font-royal text-spriteGreen-400 my-0.5 drop-shadow-md" id="claimedAmountDisplay">
+              ₹00
+            </div>
+            <p class="text-xs font-extrabold text-lime-300 bg-emerald-900/80 inline-block px-3 py-0.5 rounded-full border border-spriteGreen-500">
+              DIRECT BILL DISCOUNT
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Ticket Bottom Section: Code & Instructions -->
+        <div class="p-4 sm:p-5 bg-slate-900 flex flex-col gap-3">
+          
+          <!-- Coupon Code Display Box -->
+          <div class="w-full bg-slate-950 border border-spriteGreen-500/60 rounded-xl p-3 flex flex-col items-center text-center">
+            <span class="text-[9px] font-extrabold text-slate-400 uppercase tracking-widest">OFFICIAL VOUCHER CODE</span>
+            <div class="flex items-center justify-center gap-2 mt-1">
+              <span id="claimedVoucherCode" class="text-base sm:text-lg font-mono font-black text-lime-400 tracking-wider">
+                CD-SPTU-0000
+              </span>
+              <button id="copyVoucherBtn" class="px-2.5 py-1 text-[10px] font-bold text-white hover:text-slate-900 bg-thumsUpRed-600 hover:bg-spriteGreen-400 border border-thumsUpRed-500 rounded-md transition-all shadow-2xs active:scale-95">
+                Copy
+              </button>
+            </div>
+            <span id="claimedTimestamp" class="text-[10px] text-slate-400 font-medium mt-1">Claimed: Just now</span>
+          </div>
+
+          <!-- Counter Barcode Mockup -->
+          <div class="w-full py-1.5 px-3 bg-white rounded-lg flex flex-col items-center">
+            <div class="flex items-center justify-center gap-[2.5px] h-9 w-full max-w-[220px] overflow-hidden">
+              <span class="w-1 h-full bg-slate-900"></span>
+              <span class="w-0.5 h-full bg-slate-900"></span>
+              <span class="w-1.5 h-full bg-slate-900"></span>
+              <span class="w-0.5 h-full bg-slate-900"></span>
+              <span class="w-1 h-full bg-slate-900"></span>
+              <span class="w-2 h-full bg-slate-900"></span>
+              <span class="w-0.5 h-full bg-slate-900"></span>
+              <span class="w-1.5 h-full bg-slate-900"></span>
+              <span class="w-0.5 h-full bg-slate-900"></span>
+              <span class="w-1 h-full bg-slate-900"></span>
+              <span class="w-2 h-full bg-slate-900"></span>
+              <span class="w-0.5 h-full bg-slate-900"></span>
+              <span class="w-1 h-full bg-slate-900"></span>
+              <span class="w-1.5 h-full bg-slate-900"></span>
+              <span class="w-0.5 h-full bg-slate-900"></span>
+              <span class="w-2 h-full bg-slate-900"></span>
+            </div>
+            <span class="text-[8px] font-mono text-slate-600 tracking-widest mt-0.5">COUNTER SCAN VERIFIED</span>
+          </div>
+
+          <!-- Cashier Instructions -->
+          <div class="p-2.5 rounded-xl bg-thumsUpBlue-900/80 border border-thumsUpBlue-700 text-left flex items-start gap-2">
+            <span class="text-sm mt-0.5">ℹ️</span>
+            <div>
+              <p class="text-[11px] font-bold text-sky-300 leading-tight">How to Redeem:</p>
+              <p class="text-[10px] text-sky-200 mt-0.5 leading-relaxed">
+                Present this screen directly at the <strong>Cold Drink Billing Counter</strong> during checkout to deduct this cashback from your Thums Up / Sprite purchase.
+              </p>
+            </div>
+          </div>
+
+          <!-- Permanency Warning -->
+          <p class="text-[10px] text-center text-slate-400 font-medium">
+            🔒 This coupon is permanently tied to this device. No further scratches permitted under this scheme.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Feature Highlights -->
+    <div class="w-full max-w-lg mt-5 grid grid-cols-3 gap-2.5 text-center select-none">
+      <div class="bg-slate-900/90 border border-spriteGreen-500/50 rounded-xl p-2.5 shadow-2xs">
+        <span class="text-xl">🛍️</span>
+        <h4 class="text-[11px] font-bold text-spriteGreen-400 mt-0.5">Instant Discount</h4>
+        <p class="text-[10px] text-slate-400">Deducted at billing</p>
+      </div>
+
+      <div class="bg-slate-900/90 border border-spriteGreen-500/50 rounded-xl p-2.5 shadow-2xs">
+        <span class="text-xl">🥤</span>
+        <h4 class="text-[11px] font-bold text-spriteGreen-400 mt-0.5">Chilled Soda</h4>
+        <p class="text-[10px] text-slate-400">Thums Up &amp; Sprite</p>
+      </div>
+
+      <div class="bg-slate-900/90 border border-spriteGreen-500/50 rounded-xl p-2.5 shadow-2xs">
+        <span class="text-xl">✨</span>
+        <h4 class="text-[11px] font-bold text-spriteGreen-400 mt-0.5">Guaranteed</h4>
+        <p class="text-[10px] text-slate-400">Every scratch wins</p>
+      </div>
+    </div>
+
+    <!-- Sound Toggle Option -->
+    <div class="flex items-center justify-center mt-3">
+      <button id="soundToggleBtn" class="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-white transition-colors py-1 px-2.5 rounded-lg">
+        <span id="soundStatusIcon">🔊</span>
+        <span id="soundStatusText">Sound Effects On</span>
+      </button>
+    </div>
+
+  </main>
+
+  <!-- Toast Notification -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 z-50 max-w-xs px-4 py-2.5 rounded-xl bg-slate-950 text-white border border-spriteGreen-400 text-xs font-medium shadow-xl flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <span id="toastIcon">✨</span>
+    <span id="toastText">Notification message</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="w-full border-t border-slate-800 bg-slate-950/90 backdrop-blur-sm py-3.5 text-center text-xs text-slate-400 mt-auto select-none">
+    <div class="max-w-3xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-1.5">
+      <div class="flex items-center gap-1 font-medium">
+        <span>© Cold Drink Scheme</span>
+        <span>•</span>
+        <span class="text-spriteGreen-400 font-bold">Thums Up &amp; Sprite Cashback</span>
+      </div>
+      
+      <!-- Demo Reset Button -->
+      <div class="flex items-center gap-2 text-[10px] text-slate-500">
+        <span>⚡ Refreshing ⚡</span>
+        <span>•</span>
+        <button id="resetDemoDeviceBtn" class="text-[10px] text-slate-400 hover:text-spriteGreen-400 underline decoration-dotted transition-colors" title="Reset this device's coupon for demonstration">
+          Reset Demo on This Device
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      'use strict';
+
+      // ========================================================
+      // 1. STORAGE KEYS & CONSTANTS
+      // ========================================================
+      const STORAGE_KEY_USER_COUPON = 'cd_sptu_user_claimed_coupon_v1';
+
+      // ========================================================
+      // 2. WEB AUDIO SYNTHESIZER
+      // ========================================================
+      let audioCtx = null;
+      let soundEnabled = true;
+
+      function getAudioContext() {
+        if (!audioCtx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) audioCtx = new AudioContext();
+        }
+        if (audioCtx && audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+        return audioCtx;
+      }
+
+      let lastScratchSoundTime = 0;
+      function playScratchSound() {
+        if (!soundEnabled) return;
+        const ctx = getAudioContext();
+        if (!ctx) return;
+
+        const now = Date.now();
+        if (now - lastScratchSoundTime < 45) return;
+        lastScratchSoundTime = now;
+
+        try {
+          const sampleLength = ctx.sampleRate * 0.03;
+          const buffer = ctx.createBuffer(1, sampleLength, ctx.sampleRate);
+          const channel = buffer.getChannelData(0);
+          for (let i = 0; i < sampleLength; i++) {
+            channel[i] = (Math.random() * 2 - 1) * Math.exp(-i / (sampleLength * 0.35));
+          }
+
+          const noiseSource = ctx.createBufferSource();
+          noiseSource.buffer = buffer;
+
+          const filter = ctx.createBiquadFilter();
+          filter.type = 'bandpass';
+          filter.frequency.setValueAtTime(2800 + Math.random() * 500, ctx.currentTime);
+          filter.Q.setValueAtTime(2.2, ctx.currentTime);
+
+          const gain = ctx.createGain();
+          gain.gain.setValueAtTime(0.05, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.03);
+
+          noiseSource.connect(filter);
+          filter.connect(gain);
+          gain.connect(ctx.destination);
+
+          noiseSource.start();
+        } catch (e) {}
+      }
+
+      function playCelebrationFanfare(isHighWin) {
+        if (!soundEnabled) return;
+        const ctx = getAudioContext();
+        if (!ctx) return;
+
+        try {
+          const chord = isHighWin 
+            ? [523.25, 659.25, 783.99, 1046.50, 1318.51]
+            : [523.25, 659.25, 783.99, 1046.50];
+
+          chord.forEach((freq, idx) => {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.07);
+
+            gain.gain.setValueAtTime(0.12, ctx.currentTime + idx * 0.07);
+            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + idx * 0.07 + 0.45);
+
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+
+            osc.start(ctx.currentTime + idx * 0.07);
+            osc.stop(ctx.currentTime + idx * 0.07 + 0.47);
+          });
+        } catch (e) {}
+      }
+
+      // ========================================================
+      // 3. CASHBACK REWARD ENGINE
+      // - Randomly assigns ₹10, ₹20, or ₹30 per session
+      // ========================================================
+      function generateReward() {
+        const roll = Math.random();
+        if (roll < 0.34) {
+          return 10;
+        } else if (roll < 0.67) {
+          return 20;
+        } else {
+          return 30;
+        }
+      }
+
+      function generateVoucherCode(amount) {
+        const chars = '23456789ABCDEFGHJKLMNPQRSTUVWXYZ';
+        let randomStr = '';
+        for (let i = 0; i < 4; i++) {
+          randomStr += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return `CD-SPTU-${randomStr}`;
+      }
+
+      function formatCurrentDateTime() {
+        const d = new Date();
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        const day = d.getDate();
+        const month = months[d.getMonth()];
+        const year = d.getFullYear();
+        let hours = d.getHours();
+        const minutes = d.getMinutes().toString().padStart(2, '0');
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12 || 12;
+        return `${day} ${month} ${year}, ${hours}:${minutes} ${ampm}`;
+      }
+
+      // ========================================================
+      // 4. CANVAS SCRATCH ENGINE
+      // ========================================================
+      const unclaimedCardView = document.getElementById('unclaimedCardView');
+      const claimedCouponView = document.getElementById('claimedCouponView');
+      const canvas = document.getElementById('scratchCanvas');
+      const ctx = canvas ? canvas.getContext('2d', { willReadFrequently: true }) : null;
+      
+      const scratchProgressBar = document.getElementById('scratchProgressBar');
+      const scratchPercentageText = document.getElementById('scratchPercentageText');
+      const scratchPrompt = document.getElementById('scratchPrompt');
+      const prizeAmountText = document.getElementById('prizeAmountText');
+      const previewVoucherCode = document.getElementById('previewVoucherCode');
+      const quickRevealBtn = document.getElementById('quickRevealBtn');
+
+      // Claimed View DOM
+      const claimedAmountDisplay = document.getElementById('claimedAmountDisplay');
+      const claimedVoucherCode = document.getElementById('claimedVoucherCode');
+      const claimedTimestamp = document.getElementById('claimedTimestamp');
+
+      let assignedAmount = 10;
+      let assignedVoucherCode = '';
+      let isCardRevealed = false;
+      let isScratching = false;
+      let lastPoint = null;
+
+      function drawMetallicFoil(width, height) {
+        if (!ctx) return;
+        ctx.save();
+        ctx.globalCompositeOperation = 'source-over';
+
+        // Sprite Green Foil Gradient
+        const grad = ctx.createLinearGradient(0, 0, width, height);
+        grad.addColorStop(0, '#00E676');
+        grad.addColorStop(0.3, '#76FF03');
+        grad.addColorStop(0.6, '#00A859');
+        grad.addColorStop(0.85, '#0277BD');
+        grad.addColorStop(1, '#D32F2F');
+
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, width, height);
+
+        // Border Accent
+        ctx.strokeStyle = '#00E676';
+        ctx.lineWidth = 3;
+        ctx.strokeRect(10, 10, width - 20, height - 20);
+
+        ctx.strokeStyle = '#FFFFFF';
+        ctx.lineWidth = 1.5;
+        ctx.strokeRect(14, 14, width - 28, height - 28);
+
+        const cx = width / 2;
+        const cy = height / 2;
+
+        // Central Seal
+        ctx.beginPath();
+        ctx.arc(cx, cy - 10, 42, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(15, 23, 42, 0.4)';
+        ctx.fill();
+        ctx.strokeStyle = '#76FF03';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // Foil Typography
+        ctx.fillStyle = '#FFFFFF';
+        ctx.font = 'bold 11px Poppins, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('👍 THUMS UP x SPRITE 🍋', cx, cy - 40);
+
+        ctx.font = '900 18px Poppins, sans-serif';
+        ctx.fillStyle = '#76FF03';
+        ctx.fillText('COLD DRINK', cx, cy - 12);
+
+        ctx.font = 'bold 10px Poppins, sans-serif';
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillText('CASHBACK SCHEME', cx, cy + 6);
+
+        // Scratch Prompt Pill on Canvas
+        ctx.fillStyle = '#0F172A';
+        roundRect(ctx, cx - 75, cy + 26, 150, 24, 12);
+        ctx.fill();
+
+        ctx.fillStyle = '#76FF03';
+        ctx.font = 'bold 10px Poppins, sans-serif';
+        ctx.fillText('🪙 SCRATCH HERE 🪙', cx, cy + 42);
+
+        ctx.restore();
+      }
+
+      function roundRect(context, x, y, width, height, radius) {
+        context.beginPath();
+        context.moveTo(x + radius, y);
+        context.lineTo(x + width - radius, y);
+        context.quadraticCurveTo(x + width, y, x + width, y + radius);
+        context.lineTo(x + width, y + height - radius);
+        context.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+        context.lineTo(x + radius, y);
+        context.quadraticCurveTo(x, y + height, x, y + height - radius);
+        context.lineTo(x, y + radius);
+        context.quadraticCurveTo(x, y, x + radius, y);
+        context.closePath();
+      }
+
+      function resizeCanvas() {
+        if (!canvas || !ctx) return;
+        const rect = canvas.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        ctx.scale(dpr, dpr);
+
+        drawMetallicFoil(rect.width, rect.height);
+      }
+
+      function getCoordinates(e) {
+        const rect = canvas.getBoundingClientRect();
+        let clientX, clientY;
+
+        if (e.touches && e.touches.length > 0) {
+          clientX = e.touches[0].clientX;
+          clientY = e.touches[0].clientY;
+        } else {
+          clientX = e.clientX;
+          clientY = e.clientY;
+        }
+
+        return {
+          x: clientX - rect.left,
+          y: clientY - rect.top
+        };
+      }
+
+      function scratchAt(pos) {
+        if (isCardRevealed || !ctx) return;
+
+        ctx.save();
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.beginPath();
+
+        if (lastPoint) {
+          ctx.lineWidth = 44;
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+          ctx.moveTo(lastPoint.x, lastPoint.y);
+          ctx.lineTo(pos.x, pos.y);
+          ctx.stroke();
+        } else {
+          ctx.arc(pos.x, pos.y, 22, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        ctx.restore();
+        lastPoint = pos;
+
+        playScratchSound();
+      }
+
+      let progressTimer = null;
+      function scheduleProgressCheck() {
+        if (progressTimer) return;
+        progressTimer = setTimeout(() => {
+          progressTimer = null;
+          evaluateScratchProgress();
+        }, 80);
+      }
+
+      function evaluateScratchProgress() {
+        if (isCardRevealed || !ctx) return;
+
+        const width = canvas.width;
+        const height = canvas.height;
+        const sampleStep = 18;
+        const imgData = ctx.getImageData(0, 0, width, height);
+        const data = imgData.data;
+
+        let total = 0;
+        let cleared = 0;
+
+        for (let y = 0; y < height; y += sampleStep) {
+          for (let x = 0; x < width; x += sampleStep) {
+            const index = (y * width + x) * 4 + 3;
+            total++;
+            if (data[index] < 128) {
+              cleared++;
+            }
+          }
+        }
+
+        const pct = Math.min(100, Math.round((cleared / total) * 100));
+        scratchProgressBar.style.width = `${pct}%`;
+        scratchPercentageText.textContent = `${pct}% Scratched`;
+
+        if (pct >= 10 && scratchPrompt) {
+          scratchPrompt.style.display = 'none';
+        }
+
+        if (pct >= 45) {
+          finalizeClaimAndLock();
+        }
+      }
+
+      function finalizeClaimAndLock() {
+        if (isCardRevealed) return;
+        isCardRevealed = true;
+
+        const timeString = formatCurrentDateTime();
+
+        const claimedData = {
+          amount: assignedAmount,
+          code: assignedVoucherCode,
+          timestamp: timeString,
+          claimed: true
+        };
+
+        try {
+          localStorage.setItem(STORAGE_KEY_USER_COUPON, JSON.stringify(claimedData));
+        } catch (e) {
+          console.warn('Storage error', e);
+        }
+
+        if (scratchProgressBar) scratchProgressBar.style.width = '100%';
+        if (scratchPercentageText) scratchPercentageText.textContent = '100% Revealed!';
+        if (canvas) canvas.style.opacity = '0';
+
+        playCelebrationFanfare(assignedAmount === 30);
+        triggerConfetti(assignedAmount === 30);
+
+        showToast(`Congratulations! You won ₹${assignedAmount} Cold Drink Cashback!`, '🎉');
+
+        setTimeout(() => {
+          renderClaimedCouponView(claimedData);
+        }, 1100);
+      }
+
+      function triggerConfetti(isBigWin) {
+        if (typeof confetti !== 'function') return;
+
+        confetti({
+          particleCount: isBigWin ? 110 : 65,
+          spread: isBigWin ? 85 : 60,
+          origin: { y: 0.62 },
+          colors: ['#00E676', '#76FF03', '#D32F2F', '#0277BD', '#FFEB3B']
+        });
+
+        if (isBigWin) {
+          setTimeout(() => {
+            confetti({ particleCount: 45, angle: 60, spread: 55, origin: { x: 0.1, y: 0.6 } });
+            confetti({ particleCount: 45, angle: 120, spread: 55, origin: { x: 0.9, y: 0.6 } });
+          }, 260);
+        }
+      }
+
+      function renderClaimedCouponView(couponData) {
+        unclaimedCardView.classList.add('hidden');
+        
+        claimedAmountDisplay.textContent = `₹${couponData.amount}`;
+        claimedVoucherCode.textContent = couponData.code;
+        claimedTimestamp.textContent = `Claimed: ${couponData.timestamp}`;
+
+        claimedCouponView.classList.remove('hidden');
+      }
+
+      function checkAndInitializeCard() {
+        let savedData = null;
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY_USER_COUPON);
+          if (raw) savedData = JSON.parse(raw);
+        } catch (e) {
+          savedData = null;
+        }
+
+        if (savedData && savedData.claimed) {
+          renderClaimedCouponView(savedData);
+        } else {
+          unclaimedCardView.classList.remove('hidden');
+          claimedCouponView.classList.add('hidden');
+
+          assignedAmount = generateReward();
+          assignedVoucherCode = generateVoucherCode(assignedAmount);
+
+          prizeAmountText.textContent = `₹${assignedAmount}`;
+          previewVoucherCode.textContent = assignedVoucherCode;
+
+          if (canvas) {
+            canvas.style.display = 'block';
+            canvas.style.opacity = '1';
+          }
+          if (scratchPrompt) scratchPrompt.style.display = 'flex';
+          if (scratchProgressBar) scratchProgressBar.style.width = '0%';
+          if (scratchPercentageText) scratchPercentageText.textContent = '0% Scratched';
+
+          resizeCanvas();
+        }
+      }
+
+      let toastTimer = null;
+      function showToast(message, icon = '✨') {
+        const toast = document.getElementById('toastNotification');
+        const text = document.getElementById('toastText');
+        const icn = document.getElementById('toastIcon');
+
+        text.textContent = message;
+        icn.textContent = icon;
+
+        toast.classList.remove('translate-y-20', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toast.classList.add('translate-y-20', 'opacity-0');
+          toast.classList.remove('translate-y-0', 'opacity-100');
+        }, 2800);
+      }
+
+      function setupEvents() {
+        if (canvas) {
+          const onStart = (e) => {
+            if (isCardRevealed) return;
+            isScratching = true;
+            getAudioContext();
+            const pos = getCoordinates(e);
+            scratchAt(pos);
+            scheduleProgressCheck();
+          };
+
+          const onMove = (e) => {
+            if (!isScratching || isCardRevealed) return;
+            const pos = getCoordinates(e);
+            scratchAt(pos);
+            scheduleProgressCheck();
+            if (e.cancelable) e.preventDefault();
+          };
+
+          const onEnd = () => {
+            isScratching = false;
+            lastPoint = null;
+          };
+
+          canvas.addEventListener('mousedown', onStart);
+          window.addEventListener('mousemove', onMove);
+          window.addEventListener('mouseup', onEnd);
+
+          canvas.addEventListener('touchstart', onStart, { passive: false });
+          window.addEventListener('touchmove', onMove, { passive: false });
+          window.addEventListener('touchend', onEnd);
+          window.addEventListener('touchcancel', onEnd);
+        }
+
+        if (quickRevealBtn) {
+          quickRevealBtn.addEventListener('click', () => {
+            if (isCardRevealed) return;
+            getAudioContext();
+            finalizeClaimAndLock();
+          });
+        }
+
+        const copyBtn = document.getElementById('copyVoucherBtn');
+        if (copyBtn) {
+          copyBtn.addEventListener('click', () => {
+            const codeText = claimedVoucherCode.textContent.trim();
+            const temp = document.createElement('input');
+            temp.value = codeText;
+            document.body.appendChild(temp);
+            temp.select();
+            try {
+              document.execCommand('copy');
+              showToast(`Voucher code ${codeText} copied!`, '📋');
+            } catch (e) {
+              showToast(`Code: ${codeText}`, '📋');
+            }
+            document.body.removeChild(temp);
+          });
+        }
+
+        const soundBtn = document.getElementById('soundToggleBtn');
+        const soundIcon = document.getElementById('soundStatusIcon');
+        const soundText = document.getElementById('soundStatusText');
+
+        if (soundBtn) {
+          soundBtn.addEventListener('click', () => {
+            soundEnabled = !soundEnabled;
+            if (soundEnabled) {
+              soundIcon.textContent = '🔊';
+              soundText.textContent = 'Sound Effects On';
+              showToast('Sound enabled', '🔔');
+            } else {
+              soundIcon.textContent = '🔇';
+              soundText.textContent = 'Sound Effects Off';
+              showToast('Sound muted', '🔕');
+            }
+          });
+        }
+
+        const resetDemoBtn = document.getElementById('resetDemoDeviceBtn');
+        if (resetDemoBtn) {
+          resetDemoBtn.addEventListener('click', () => {
+            localStorage.removeItem(STORAGE_KEY_USER_COUPON);
+            isCardRevealed = false;
+            showToast('Device demo reset. Reloading scratch card...', '🔄');
+            setTimeout(() => {
+              window.location.reload();
+            }, 600);
+          });
+        }
+
+        window.addEventListener('resize', () => {
+          if (!isCardRevealed && canvas) {
+            resizeCanvas();
+          }
+        });
+      }
+
+      window.addEventListener('load', () => {
+        setupEvents();
+        checkAndInitializeCard();
+      });
+
+    })();
+  </script>
+</body>
+</html>
