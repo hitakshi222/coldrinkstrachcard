@@ -250,12 +250,12 @@
 
             <!-- Value Display -->
             <div class="flex-1 flex flex-col items-center justify-center my-0.5">
-              <span class="text-2xl mb-0.5">🥤</span>
-              <p class="text-[11px] font-extrabold uppercase tracking-widest text-spriteGreen-400">
+              <span class="text-2xl mb-0.5" id="prizeEmoji">🥤</span>
+              <p id="prizeHeaderTitle" class="text-[11px] font-extrabold uppercase tracking-widest text-spriteGreen-400">
                 Congratulations! You Won
               </p>
               
-              <div class="flex items-center justify-center my-0.5">
+              <div class="flex items-center justify-center my-0.5 min-h-[70px]">
                 <span id="prizeAmountText" class="text-6xl sm:text-7xl font-black font-royal tracking-tight bg-gradient-to-br from-spriteGreen-400 via-yellow-300 to-thumsUpRed-500 bg-clip-text text-transparent drop-shadow-md">
                   ₹00
                 </span>
@@ -265,7 +265,7 @@
                 <svg class="w-3.5 h-3.5 text-spriteGreen-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
                 </svg>
-                <span>Instant Cold Drink Counter Discount</span>
+                <span id="prizeSubtext">Instant Cold Drink Counter Discount</span>
               </div>
             </div>
 
@@ -322,9 +322,9 @@
       
       <!-- Success Notification Badge -->
       <div class="w-full mb-3 flex items-center justify-center gap-2 py-2 px-3 bg-emerald-950/80 border border-spriteGreen-500 rounded-xl shadow-xs">
-        <span class="text-base">🎉</span>
+        <span class="text-base" id="claimedBadgeIcon">🎉</span>
         <div class="text-left">
-          <p class="text-xs font-black text-spriteGreen-400 leading-tight">Cold Drink Coupon Unlocked!</p>
+          <p class="text-xs font-black text-spriteGreen-400 leading-tight" id="claimedBadgeTitle">Cold Drink Coupon Unlocked!</p>
           <p class="text-[10px] text-emerald-300">1-Time Scratch Completed on this Device</p>
         </div>
       </div>
@@ -357,11 +357,11 @@
 
           <!-- Cashback Value -->
           <div class="my-3 text-center">
-            <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Guaranteed Cashback Amount</p>
+            <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400" id="claimedLabelTitle">Guaranteed Cashback Amount</p>
             <div class="text-6xl sm:text-7xl font-black font-royal text-spriteGreen-400 my-0.5 drop-shadow-md" id="claimedAmountDisplay">
               ₹00
             </div>
-            <p class="text-xs font-extrabold text-lime-300 bg-emerald-900/80 inline-block px-3 py-0.5 rounded-full border border-spriteGreen-500">
+            <p class="text-xs font-extrabold text-lime-300 bg-emerald-900/80 inline-block px-3 py-0.5 rounded-full border border-spriteGreen-500" id="claimedSubtext">
               DIRECT BILL DISCOUNT
             </p>
           </div>
@@ -446,8 +446,8 @@
 
       <div class="bg-slate-900/90 border border-spriteGreen-500/50 rounded-xl p-2.5 shadow-2xs">
         <span class="text-xl">✨</span>
-        <h4 class="text-[11px] font-bold text-spriteGreen-400 mt-0.5">Guaranteed</h4>
-        <p class="text-[10px] text-slate-400">Every scratch wins</p>
+        <h4 class="text-[11px] font-bold text-spriteGreen-400 mt-0.5">Fair Chance</h4>
+        <p class="text-[10px] text-slate-400">Randomized odds</p>
       </div>
     </div>
 
@@ -495,6 +495,7 @@
       // 1. STORAGE KEYS & CONSTANTS
       // ========================================================
       const STORAGE_KEY_USER_COUPON = 'cd_sptu_user_claimed_coupon_v1';
+      const OOPS_TEXT = "Oops better luck next time";
 
       // ========================================================
       // 2. WEB AUDIO SYNTHESIZER
@@ -582,18 +583,23 @@
 
       // ========================================================
       // 3. CASHBACK REWARD ENGINE
-      // - 30 is present exactly 6 times in a pool of 100 entries (6% chance)
+      // Exact Probability according to 10 people:
+      // - 4 people (40%): Oops better luck next time
+      // - 3 people (30%): ₹10
+      // - 2 people (20%): ₹20
+      // - 1 person (10%): ₹30
       // ========================================================
       function generateReward() {
-        const rewards = [
-          // 6 entries of 30
-          30, 30, 30, 30, 30, 30,
-          // Remaining 94 entries distributed between 10 and 20
-          10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
-          20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20
-        ];
-        const randomIndex = Math.floor(Math.random() * rewards.length);
-        return rewards[randomIndex];
+        const roll = Math.random();
+        if (roll < 0.40) {
+          return OOPS_TEXT;
+        } else if (roll < 0.70) {
+          return 10;
+        } else if (roll < 0.90) {
+          return 20;
+        } else {
+          return 30;
+        }
       }
 
       function generateVoucherCode(amount) {
@@ -630,11 +636,18 @@
       const scratchPercentageText = document.getElementById('scratchPercentageText');
       const scratchPrompt = document.getElementById('scratchPrompt');
       const prizeAmountText = document.getElementById('prizeAmountText');
+      const prizeHeaderTitle = document.getElementById('prizeHeaderTitle');
+      const prizeEmoji = document.getElementById('prizeEmoji');
+      const prizeSubtext = document.getElementById('prizeSubtext');
       const previewVoucherCode = document.getElementById('previewVoucherCode');
       const quickRevealBtn = document.getElementById('quickRevealBtn');
 
       // Claimed View DOM
       const claimedAmountDisplay = document.getElementById('claimedAmountDisplay');
+      const claimedLabelTitle = document.getElementById('claimedLabelTitle');
+      const claimedSubtext = document.getElementById('claimedSubtext');
+      const claimedBadgeTitle = document.getElementById('claimedBadgeTitle');
+      const claimedBadgeIcon = document.getElementById('claimedBadgeIcon');
       const claimedVoucherCode = document.getElementById('claimedVoucherCode');
       const claimedTimestamp = document.getElementById('claimedTimestamp');
 
@@ -843,10 +856,15 @@
         if (scratchPercentageText) scratchPercentageText.textContent = '100% Revealed!';
         if (canvas) canvas.style.opacity = '0';
 
-        playCelebrationFanfare(assignedAmount === 30);
-        triggerConfetti(assignedAmount === 30);
+        const isWin = typeof assignedAmount === 'number';
 
-        showToast(`Congratulations! You won ₹${assignedAmount} Cold Drink Cashback!`, '🎉');
+        if (isWin) {
+          playCelebrationFanfare(assignedAmount === 30);
+          triggerConfetti(assignedAmount === 30);
+          showToast(`Congratulations! You won ₹${assignedAmount} Cold Drink Cashback!`, '🎉');
+        } else {
+          showToast('Oops! Better luck next time!', '🥤');
+        }
 
         setTimeout(() => {
           renderClaimedCouponView(claimedData);
@@ -874,7 +892,26 @@
       function renderClaimedCouponView(couponData) {
         unclaimedCardView.classList.add('hidden');
         
-        claimedAmountDisplay.textContent = `₹${couponData.amount}`;
+        const isWin = typeof couponData.amount === 'number';
+
+        if (isWin) {
+          claimedBadgeIcon.textContent = '🎉';
+          claimedBadgeTitle.textContent = 'Cold Drink Coupon Unlocked!';
+          claimedLabelTitle.textContent = 'Guaranteed Cashback Amount';
+          claimedAmountDisplay.textContent = `₹${couponData.amount}`;
+          claimedAmountDisplay.className = "text-6xl sm:text-7xl font-black font-royal text-spriteGreen-400 my-0.5 drop-shadow-md";
+          claimedSubtext.textContent = 'DIRECT BILL DISCOUNT';
+          claimedSubtext.className = "text-xs font-extrabold text-lime-300 bg-emerald-900/80 inline-block px-3 py-0.5 rounded-full border border-spriteGreen-500";
+        } else {
+          claimedBadgeIcon.textContent = '🥤';
+          claimedBadgeTitle.textContent = 'Scratch Card Result Recorded';
+          claimedLabelTitle.textContent = 'Card Result';
+          claimedAmountDisplay.textContent = couponData.amount;
+          claimedAmountDisplay.className = "text-xl sm:text-2xl font-black text-amber-300 my-2 drop-shadow-md text-center px-2";
+          claimedSubtext.textContent = 'THANK YOU FOR PARTICIPATING';
+          claimedSubtext.className = "text-xs font-bold text-amber-300 bg-amber-950/80 inline-block px-3 py-0.5 rounded-full border border-amber-600";
+        }
+
         claimedVoucherCode.textContent = couponData.code;
         claimedTimestamp.textContent = `Claimed: ${couponData.timestamp}`;
 
@@ -899,7 +936,20 @@
           assignedAmount = generateReward();
           assignedVoucherCode = generateVoucherCode(assignedAmount);
 
-          prizeAmountText.textContent = `₹${assignedAmount}`;
+          if (typeof assignedAmount === 'number') {
+            prizeEmoji.textContent = '🥤';
+            prizeHeaderTitle.textContent = 'Congratulations! You Won';
+            prizeAmountText.textContent = `₹${assignedAmount}`;
+            prizeAmountText.className = "text-6xl sm:text-7xl font-black font-royal tracking-tight bg-gradient-to-br from-spriteGreen-400 via-yellow-300 to-thumsUpRed-500 bg-clip-text text-transparent drop-shadow-md";
+            prizeSubtext.textContent = 'Instant Cold Drink Counter Discount';
+          } else {
+            prizeEmoji.textContent = '🍀';
+            prizeHeaderTitle.textContent = 'Scratch Result';
+            prizeAmountText.textContent = assignedAmount;
+            prizeAmountText.className = "text-xl sm:text-2xl font-black tracking-tight text-amber-300 drop-shadow-md text-center px-2";
+            prizeSubtext.textContent = 'Better luck on your next bottle!';
+          }
+
           previewVoucherCode.textContent = assignedVoucherCode;
 
           if (canvas) {
