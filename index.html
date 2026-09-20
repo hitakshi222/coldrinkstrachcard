@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Cold Drink Cashback Scheme - Thums Up & Sprite Special</title>
+  <title>Scratch and Win Offer on All Cold Drinks</title>
 
   <!-- External Styles & Confetti -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Space+Mono:wght@700&family=Teko:wght@700&display=swap" rel="stylesheet">
 
-  <!-- Tailwind Configuration for Thums Up & Sprite Brand Colors -->
+  <!-- Tailwind Configuration for Brand Colors -->
   <script>
     tailwind.config = {
       theme: {
@@ -120,11 +120,11 @@
   <header class="w-full bg-gradient-to-r from-thumsUpRed-600 via-spriteGreen-600 to-thumsUpBlue-800 text-white py-1.5 px-4 shadow-md select-none">
     <div class="max-w-3xl mx-auto flex items-center justify-between text-xs sm:text-sm font-semibold">
       <div class="flex items-center gap-1.5">
-        <span class="text-base">👍</span>
-        <span class="tracking-wide">THUMS UP x SPRITE SPECIAL</span>
+        <span class="text-base">🥤</span>
+        <span class="tracking-wide">SCRATCH AND WIN OFFER ON ALL COLDDRINKS</span>
       </div>
       <div class="flex items-center gap-1 text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-black/30 px-2.5 py-0.5 rounded-full backdrop-blur-sm border border-white/20">
-        <span>COLD DRINK REFRESHMENT</span>
+        <span>SPECIAL SCHEME</span>
         <span class="text-lime-300">🍋</span>
       </div>
       <div class="hidden sm:flex items-center gap-1.5 text-xs">
@@ -137,19 +137,17 @@
   <!-- Main Content Layout -->
   <main class="flex-1 max-w-xl w-full mx-auto px-4 py-4 sm:py-6 flex flex-col items-center justify-start relative z-10">
 
-    <!-- COLD DRINK LOGO (Sprite + Thums Up Theme Vector) -->
+    <!-- COLD DRINK LOGO -->
     <div class="w-full flex flex-col items-center text-center my-1">
       <div class="relative w-full max-w-[340px] sm:max-w-[380px]">
         <svg viewBox="0 0 460 175" class="w-full h-auto drop-shadow-lg select-none" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <!-- Sprite Lime-Green Gradient -->
             <linearGradient id="spriteGrad" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stop-color="#76FF03" />
               <stop offset="50%" stop-color="#00E676" />
               <stop offset="100%" stop-color="#00A859" />
             </linearGradient>
 
-            <!-- Thums Up Red-Blue Gradient -->
             <linearGradient id="thumsRedGrad" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stop-color="#FF1744" />
               <stop offset="50%" stop-color="#D50000" />
@@ -161,7 +159,6 @@
               <stop offset="100%" stop-color="#0277BD" />
             </linearGradient>
 
-            <!-- Chilled Shield Gradient -->
             <linearGradient id="chilledShield" x1="0%" y1="0%" x2="0%" y2="100%">
               <stop offset="0%" stop-color="#1E3A8A" />
               <stop offset="100%" stop-color="#0F172A" />
@@ -177,16 +174,12 @@
             <circle cx="310" cy="35" r="9" fill="#FFEB3B" opacity="0.7" />
           </g>
 
-          <!-- Thums Up Symbol Shield (Thumbs Up + Soda Splash) -->
           <g>
-            <!-- Outer Shield -->
             <path d="M 270 36 Q 308 30 346 36 C 346 64 332 94 308 106 C 284 94 270 64 270 36 Z" fill="url(#chilledShield)" stroke="url(#spriteGrad)" stroke-width="4.5" stroke-linejoin="round" />
             <path d="M 276 40 Q 308 35 340 40 C 340 63 328 88 308 98 C 288 88 276 63 276 40 Z" fill="none" stroke="#FF1744" stroke-width="2.5" opacity="0.9" />
 
-            <!-- Thums Up Icon inside shield -->
-            <text x="308" y="76" font-family="'Poppins', sans-serif" font-size="34" font-weight="900" fill="url(#spriteGrad)" text-anchor="middle">👍</text>
+            <text x="308" y="76" font-family="'Poppins', sans-serif" font-size="34" font-weight="900" fill="url(#spriteGrad)" text-anchor="middle">🥤</text>
 
-            <!-- Dynamic Soda Splash Bolt -->
             <polyline points="280,88 298,66 314,80 348,36" fill="none" stroke="#FF1744" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
             <polygon points="340,30 366,32 354,58" fill="#FF1744" />
 
@@ -194,20 +187,13 @@
             <polygon points="343,33 363,35 353,55" fill="url(#spriteGrad)" />
           </g>
 
-          <!-- Brand Typography: "COLD" -->
-          <text x="135" y="86" font-family="'Poppins', sans-serif" font-size="54" font-style="italic" font-weight="900" fill="url(#thumsRedGrad)" letter-spacing="1">COLD</text>
+          <text x="135" y="86" font-family="'Poppins', sans-serif" font-size="52" font-style="italic" font-weight="900" fill="url(#thumsRedGrad)" letter-spacing="1">SCRATCH</text>
+          <text x="145" y="128" font-family="'Poppins', sans-serif" font-size="52" font-style="italic" font-weight="900" fill="url(#spriteGrad)" letter-spacing="2">& WIN</text>
 
-          <!-- Brand Typography: "DRINK" -->
-          <text x="145" y="128" font-family="'Poppins', sans-serif" font-size="54" font-style="italic" font-weight="900" fill="url(#spriteGrad)" letter-spacing="2">DRINK</text>
-
-          <!-- Sub-brand Tagline -->
           <g transform="translate(142, 134)">
             <path d="M -10 16 Q -28 15 -34 6" fill="none" stroke="#00E676" stroke-width="3" stroke-linecap="round" />
             <polygon points="-36,2 -30,8 -36,10" fill="#00E676" />
-
-            <!-- Word REFRESHMENT -->
-            <text x="75" y="18" font-family="'Poppins', sans-serif" font-size="24" font-style="italic" font-weight="900" fill="url(#blueSheen)" letter-spacing="3" text-anchor="middle">REFRESHMENT</text>
-
+            <text x="75" y="18" font-family="'Poppins', sans-serif" font-size="18" font-style="italic" font-weight="900" fill="url(#blueSheen)" letter-spacing="2" text-anchor="middle">ALL COLDDRINKS</text>
             <path d="M -16 25 L 155 25 Q 170 25 178 16" fill="none" stroke="url(#thumsRedGrad)" stroke-width="4.5" stroke-linecap="round" />
             <polygon points="174,12 184,14 179,24" fill="#FF1744" />
           </g>
@@ -215,8 +201,8 @@
       </div>
 
       <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-950/80 border border-spriteGreen-500 text-spriteGreen-400 text-[11px] sm:text-xs font-bold tracking-wide mt-1 shadow-sm">
-        <span>👍</span>
-        <span>THUMS UP &amp; SPRITE CASHBACK SCHEME</span>
+        <span>🥤</span>
+        <span>SCRATCH AND WIN OFFER ON ALL COLDDRINKS</span>
         <span>🍋</span>
       </div>
 
@@ -230,7 +216,7 @@
     <!-- VIEW A: ACTIVE UNCLAIMED SCRATCH CARD CONTAINER -->
     <div id="unclaimedCardView" class="w-full max-w-[380px] mx-auto mt-3 flex flex-col items-center">
       
-      <!-- Outer Card with Chilled Sprite/ThumsUp Rim -->
+      <!-- Outer Card Rim -->
       <div class="w-full p-2.5 rounded-[26px] bg-gradient-to-br from-spriteGreen-500 via-thumsUpBlue-700 to-thumsUpRed-600 shadow-[0_12px_36px_-10px_rgba(0,200,83,0.4)]">
         
         <!-- Inner Card Body -->
@@ -241,10 +227,10 @@
             
             <div class="w-full flex items-center justify-between border-b border-emerald-800/60 pb-1">
               <span class="text-[11px] font-extrabold tracking-wider text-spriteGreen-400 flex items-center gap-1">
-                <span>👍</span> COLD DRINK
+                <span>🥤</span> COLD DRINK OFFER
               </span>
               <span class="text-[10px] font-extrabold uppercase text-amber-300 bg-thumsUpRed-700 px-2 py-0.5 rounded-full border border-thumsUpRed-500">
-                THUMS UP / SPRITE
+                ALL COLDDRINKS
               </span>
             </div>
 
@@ -343,14 +329,402 @@
             <div class="flex items-center gap-1.5">
               <span class="text-lg">🥤</span>
               <div>
-                <h3 class="text-xs font-black text-spriteGreen-400 uppercase tracking-wider">Cold Drink Special</h3>
-                <p class="text-[9px] font-semibold text-thumsUpRed-500">Thums Up &amp; Sprite Voucher</p>
+                <h3 class="text-xs font-black text-spriteGreen-400 uppercase tracking-wider">Scratch &amp; Win Offer</h3>
+                <p class="text-[9px] font-semibold text-thumsUpRed-500">Valid on All Cold Drinks</p>
               </div>
             </div>
 
             <!-- Holographic Security Seal -->
             <div class="shimmer-badge w-12 h-12 rounded-full border border-spriteGreen-400 bg-gradient-to-br from-spriteGreen-600 via-thumsUpBlue-800 to-thumsUpRed-600 flex flex-col items-center justify-center shadow-xs text-center">
-              <span class="text-xs">👍</span>
+              <span class="text-xs">🥤</span>
+              <span class="text-[7px] font-extrabold text-white uppercase leading-none mt-0.5">VERIFIED</span>
+            </div>
+          </div>
+
+          <!-- Cashback Value -->
+          <div class="my-3 text-center">
+            <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400" id="claimedLabelTitle">Guaranteed Cashback Amount</p>
+            <div class="text-6xl sm:text-7xl font-black font-royal text-spriteGreen-400 my-0.5 drop-shadow-md" id="claimedAmountDisplay">
+              ₹00
+            </div>
+            <p class="text-xs font-extrabold text-lime-300 bg-emerald-900/80 inline-block px-3 py-0.5 rounded-full border border-spriteGreen-500" id="claimedSubtext">
+              DIRECT BILL DISCOUNT
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Ticket Bottom Section: Code & Instructions -->
+        <div class="p-4 sm:p-5 bg-slate-900 flex flex-col gap-3">
+          
+          <!-- Coupon Code Display Box -->
+          <div class="w-full bg-slate-950 border border-spriteGreen-500/60 rounded-xl p-3 flex flex-col items-center text-center">
+            <span class="text-[9px] font-extrabold text-slate-400 uppercase tracking-widest">OFFICIAL VOUCHER CODE</span>
+            <div class="flex items-center justify-center gap-2 mt-1">
+              <span id="claimedVoucherCode" class="text-base sm:text-lg font-mono font-black text-lime-400 tracking-wider">
+                CD-SPTU-0000
+              </span>
+              <button id="copyVoucherBtn" class="px-2.5 py-1 text-[10px] font-bold text-white hover:text-slate-900 bg-thumsUpRed-600 hover:bg-spriteGreen-400 border border-thumsUpRed-500 rounded-md transition-all shadow-2xs active:scale-95">
+                Copy
+              </button>
+            </div>
+            <span id="claimedTimestamp" class="text-[10px] text-slate-400 font-medium mt-1">Claimed: Just now</span>
+          </div>
+
+          <!-- Counter Barcode Mockup -->
+          <div class="w-full py-1.5 px-3 bg-white rounded-lg flex flex-col items-center">
+            <div class="flex items-center justify-center gap-[2.5px] h-9 w-full max-w-[220px] overflow-hidden">
+              <span class="w-1 h-full bg-slate-900"></span>
+              <span class="w-0.5 h-full bg-slate-900"></span>
+              <span class="w-1.5 h-full bg-slate-900"></span>
+              <span class="w-0.5 h-full bg-slate-900"></span>
+              <span class="w-1 h-full bg-slate-900"></span>
+              <span class="w-2 h-full bg-slate-900"></span>
+              <span class="w-0.5 h-full bg-slate-900"></span>
+              <span class="w-1.5 h-full bg-slate-900"></span>
+              <span class="w-0.5 h-full bg-slate-900"></span>
+              <span class="w-1 h-full bg-slate-900"></span>
+              <span class="w-2 h-full bg-slate-900"></span>
+              <span class="w-0.5 h-full bg-slate-900"></span>
+              <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Scratch and Win Offer on All Cold Drinks</title>
+
+  <!-- External Styles & Confetti -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Google Fonts: Poppins, Space Mono & Chilled Heavy Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Space+Mono:wght@700&family=Teko:wght@700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind Configuration for Brand Colors -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            spriteGreen: {
+              400: '#20E070',
+              500: '#00C853',
+              600: '#00A859',
+              700: '#007A3D',
+            },
+            thumsUpRed: {
+              500: '#EE1C25',
+              600: '#D32F2F',
+              700: '#B71C1C',
+            },
+            thumsUpBlue: {
+              700: '#0277BD',
+              800: '#01579B',
+              900: '#0A192F',
+            },
+            sodaYellow: '#FFEB3B',
+            ticketIvory: '#F4FBF7',
+          },
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+            display: ['Teko', 'sans-serif'],
+            royal: ['Cinzel', 'serif'],
+            mono: ['Space Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    @keyframes floatSoft {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.8; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.04); }
+    }
+    @keyframes shimmerSprite {
+      0% { transform: translateX(-150%); }
+      100% { transform: translateX(150%); }
+    }
+    
+    .chilled-bg {
+      background-color: #081C15;
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(0, 200, 83, 0.18) 0%, transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(238, 28, 37, 0.18) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(2, 119, 189, 0.15) 0%, transparent 55%),
+        radial-gradient(#1B4332 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 20px 20px;
+    }
+
+    .shimmer-badge {
+      position: relative;
+      overflow: hidden;
+    }
+    .shimmer-badge::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+      transform: translateX(-150%);
+      animation: shimmerSprite 2.8s infinite ease-in-out;
+      pointer-events: none;
+    }
+
+    .ticket-scallop-left, .ticket-scallop-right {
+      position: absolute;
+      top: 50%;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background-color: #081C15;
+      transform: translateY(-50%);
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+      z-index: 10;
+    }
+    .ticket-scallop-left { left: -11px; }
+    .ticket-scallop-right { right: -11px; }
+
+    canvas#scratchCanvas {
+      touch-action: none;
+      cursor: grab;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    canvas#scratchCanvas:active {
+      cursor: grabbing;
+    }
+  </style>
+</head>
+
+<body class="chilled-bg text-slate-100 min-h-screen flex flex-col font-sans selection:bg-spriteGreen-500 selection:text-white relative overflow-x-hidden">
+
+  <!-- Refreshing Top Banner -->
+  <header class="w-full bg-gradient-to-r from-thumsUpRed-600 via-spriteGreen-600 to-thumsUpBlue-800 text-white py-1.5 px-4 shadow-md select-none">
+    <div class="max-w-3xl mx-auto flex items-center justify-between text-xs sm:text-sm font-semibold">
+      <div class="flex items-center gap-1.5">
+        <span class="text-base">🥤</span>
+        <span class="tracking-wide">SCRATCH AND WIN OFFER ON ALL COLDDRINKS</span>
+      </div>
+      <div class="flex items-center gap-1 text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-black/30 px-2.5 py-0.5 rounded-full backdrop-blur-sm border border-white/20">
+        <span>SPECIAL SCHEME</span>
+        <span class="text-lime-300">🍋</span>
+      </div>
+      <div class="hidden sm:flex items-center gap-1.5 text-xs">
+        <span class="font-bold">CHILLED SAVINGS</span>
+        <span class="text-base">🧊</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Layout -->
+  <main class="flex-1 max-w-xl w-full mx-auto px-4 py-4 sm:py-6 flex flex-col items-center justify-start relative z-10">
+
+    <!-- COLD DRINK LOGO -->
+    <div class="w-full flex flex-col items-center text-center my-1">
+      <div class="relative w-full max-w-[340px] sm:max-w-[380px]">
+        <svg viewBox="0 0 460 175" class="w-full h-auto drop-shadow-lg select-none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="spriteGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#76FF03" />
+              <stop offset="50%" stop-color="#00E676" />
+              <stop offset="100%" stop-color="#00A859" />
+            </linearGradient>
+
+            <linearGradient id="thumsRedGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#FF1744" />
+              <stop offset="50%" stop-color="#D50000" />
+              <stop offset="100%" stop-color="#990000" />
+            </linearGradient>
+
+            <linearGradient id="blueSheen" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#00B0FF" />
+              <stop offset="100%" stop-color="#0277BD" />
+            </linearGradient>
+
+            <linearGradient id="chilledShield" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#1E3A8A" />
+              <stop offset="100%" stop-color="#0F172A" />
+            </linearGradient>
+          </defs>
+
+          <!-- Sparkling Soda Bubbles -->
+          <g>
+            <circle cx="218" cy="38" r="7" fill="#76FF03" opacity="0.8" />
+            <circle cx="248" cy="25" r="11" fill="#00E676" opacity="0.6" />
+            <circle cx="278" cy="20" r="8" fill="#FF1744" opacity="0.7" />
+            <circle cx="230" cy="54" r="5" fill="#00B0FF" opacity="0.9" />
+            <circle cx="310" cy="35" r="9" fill="#FFEB3B" opacity="0.7" />
+          </g>
+
+          <g>
+            <path d="M 270 36 Q 308 30 346 36 C 346 64 332 94 308 106 C 284 94 270 64 270 36 Z" fill="url(#chilledShield)" stroke="url(#spriteGrad)" stroke-width="4.5" stroke-linejoin="round" />
+            <path d="M 276 40 Q 308 35 340 40 C 340 63 328 88 308 98 C 288 88 276 63 276 40 Z" fill="none" stroke="#FF1744" stroke-width="2.5" opacity="0.9" />
+
+            <text x="308" y="76" font-family="'Poppins', sans-serif" font-size="34" font-weight="900" fill="url(#spriteGrad)" text-anchor="middle">🥤</text>
+
+            <polyline points="280,88 298,66 314,80 348,36" fill="none" stroke="#FF1744" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
+            <polygon points="340,30 366,32 354,58" fill="#FF1744" />
+
+            <polyline points="280,88 298,66 314,80 348,36" fill="none" stroke="url(#spriteGrad)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+            <polygon points="343,33 363,35 353,55" fill="url(#spriteGrad)" />
+          </g>
+
+          <text x="135" y="86" font-family="'Poppins', sans-serif" font-size="52" font-style="italic" font-weight="900" fill="url(#thumsRedGrad)" letter-spacing="1">SCRATCH</text>
+          <text x="145" y="128" font-family="'Poppins', sans-serif" font-size="52" font-style="italic" font-weight="900" fill="url(#spriteGrad)" letter-spacing="2">& WIN</text>
+
+          <g transform="translate(142, 134)">
+            <path d="M -10 16 Q -28 15 -34 6" fill="none" stroke="#00E676" stroke-width="3" stroke-linecap="round" />
+            <polygon points="-36,2 -30,8 -36,10" fill="#00E676" />
+            <text x="75" y="18" font-family="'Poppins', sans-serif" font-size="18" font-style="italic" font-weight="900" fill="url(#blueSheen)" letter-spacing="2" text-anchor="middle">ALL COLDDRINKS</text>
+            <path d="M -16 25 L 155 25 Q 170 25 178 16" fill="none" stroke="url(#thumsRedGrad)" stroke-width="4.5" stroke-linecap="round" />
+            <polygon points="174,12 184,14 179,24" fill="#FF1744" />
+          </g>
+        </svg>
+      </div>
+
+      <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-950/80 border border-spriteGreen-500 text-spriteGreen-400 text-[11px] sm:text-xs font-bold tracking-wide mt-1 shadow-sm">
+        <span>🥤</span>
+        <span>SCRATCH AND WIN OFFER ON ALL COLDDRINKS</span>
+        <span>🍋</span>
+      </div>
+
+      <!-- STRICT ONE-TIME RULE BANNER -->
+      <div class="mt-2 inline-flex items-center gap-1.5 px-3 py-0.5 rounded-md bg-red-950/80 border border-thumsUpRed-500 text-red-300 text-[11px] font-semibold">
+        <span class="w-2 h-2 rounded-full bg-thumsUpRed-500 animate-pulse"></span>
+        <span>Strictly 1 Scratch &amp; 1 Coupon Per Customer / Device</span>
+      </div>
+    </div>
+
+    <!-- VIEW A: ACTIVE UNCLAIMED SCRATCH CARD CONTAINER -->
+    <div id="unclaimedCardView" class="w-full max-w-[380px] mx-auto mt-3 flex flex-col items-center">
+      
+      <!-- Outer Card Rim -->
+      <div class="w-full p-2.5 rounded-[26px] bg-gradient-to-br from-spriteGreen-500 via-thumsUpBlue-700 to-thumsUpRed-600 shadow-[0_12px_36px_-10px_rgba(0,200,83,0.4)]">
+        
+        <!-- Inner Card Body -->
+        <div class="relative w-full rounded-[20px] overflow-hidden bg-slate-900 border border-spriteGreen-400 aspect-[4/3.1] min-h-[275px] select-none shadow-inner">
+
+          <!-- UNDERNEATH: PRIZE CONTENT -->
+          <div id="prizeSecretContent" class="absolute inset-0 p-4 flex flex-col items-center justify-between text-center bg-gradient-to-b from-slate-900 via-emerald-950 to-slate-900 z-0">
+            
+            <div class="w-full flex items-center justify-between border-b border-emerald-800/60 pb-1">
+              <span class="text-[11px] font-extrabold tracking-wider text-spriteGreen-400 flex items-center gap-1">
+                <span>🥤</span> COLD DRINK OFFER
+              </span>
+              <span class="text-[10px] font-extrabold uppercase text-amber-300 bg-thumsUpRed-700 px-2 py-0.5 rounded-full border border-thumsUpRed-500">
+                ALL COLDDRINKS
+              </span>
+            </div>
+
+            <!-- Value Display -->
+            <div class="flex-1 flex flex-col items-center justify-center my-0.5">
+              <span class="text-2xl mb-0.5" id="prizeEmoji">🥤</span>
+              <p id="prizeHeaderTitle" class="text-[11px] font-extrabold uppercase tracking-widest text-spriteGreen-400">
+                Congratulations! You Won
+              </p>
+              
+              <div class="flex items-center justify-center my-0.5 min-h-[70px]">
+                <span id="prizeAmountText" class="text-6xl sm:text-7xl font-black font-royal tracking-tight bg-gradient-to-br from-spriteGreen-400 via-yellow-300 to-thumsUpRed-500 bg-clip-text text-transparent drop-shadow-md">
+                  ₹00
+                </span>
+              </div>
+
+              <div class="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-300 bg-emerald-900/60 px-2.5 py-0.5 rounded-full border border-emerald-500">
+                <svg class="w-3.5 h-3.5 text-spriteGreen-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span id="prizeSubtext">Instant Cold Drink Counter Discount</span>
+              </div>
+            </div>
+
+            <!-- Footer Code Snippet -->
+            <div class="w-full pt-1.5 border-t border-dashed border-emerald-700/60 flex items-center justify-between bg-slate-950/80 -mx-4 -mb-4 px-4 py-2">
+              <div class="text-left">
+                <p class="text-[9px] font-bold text-slate-400 uppercase">Coupon Code</p>
+                <p id="previewVoucherCode" class="text-xs font-mono font-black text-lime-400">CD-SPTU-XXXX</p>
+              </div>
+              <span class="text-[10px] font-bold text-slate-200 bg-thumsUpBlue-800 px-2 py-0.5 rounded border border-thumsUpBlue-700">
+                Valid at Counter
+              </span>
+            </div>
+
+          </div>
+
+          <!-- TOP SCRATCH FOIL CANVAS -->
+          <canvas id="scratchCanvas" class="absolute inset-0 w-full h-full z-10 transition-opacity duration-500"></canvas>
+
+          <!-- Animated Scratch Hint Pill -->
+          <div id="scratchPrompt" class="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 pointer-events-none flex items-center gap-1 px-3 py-1 rounded-full bg-slate-950/90 border border-spriteGreen-400 text-spriteGreen-300 text-xs font-semibold shadow-md animate-bounce">
+            <span>🪙</span>
+            <span>Scratch with finger or mouse</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Scratch Progress & Quick Action -->
+      <div class="w-full mt-3 flex flex-col gap-2">
+        <div class="w-full flex items-center justify-between text-xs px-1 font-semibold text-slate-300">
+          <span id="scratchPercentageText">0% Scratched</span>
+          <span class="text-[11px] text-spriteGreen-400 font-medium">Auto-reveals at 45%</span>
+        </div>
+
+        <div class="w-full bg-slate-800 rounded-full h-2 p-0.5 border border-slate-700 overflow-hidden shadow-inner">
+          <div id="scratchProgressBar" class="bg-gradient-to-r from-spriteGreen-500 via-yellow-400 to-thumsUpRed-500 h-full rounded-full transition-all duration-150" style="width: 0%"></div>
+        </div>
+
+        <!-- Single Auto Reveal Button -->
+        <button id="quickRevealBtn" class="w-full mt-1 py-2.5 px-4 rounded-xl bg-gradient-to-r from-spriteGreen-600 to-thumsUpBlue-800 hover:from-spriteGreen-500 hover:to-thumsUpBlue-700 text-white border border-spriteGreen-400 text-xs font-bold tracking-wider uppercase transition-all shadow-md active:scale-95 flex items-center justify-center gap-2">
+          <svg class="w-4 h-4 text-lime-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+          </svg>
+          <span>Tap for Quick Scratch &amp; Reveal</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- VIEW B: PERMANENT CLAIMED COUPON TICKET -->
+    <div id="claimedCouponView" class="hidden w-full max-w-[390px] mx-auto mt-2 flex flex-col items-center">
+      
+      <!-- Success Notification Badge -->
+      <div class="w-full mb-3 flex items-center justify-center gap-2 py-2 px-3 bg-emerald-950/80 border border-spriteGreen-500 rounded-xl shadow-xs">
+        <span class="text-base" id="claimedBadgeIcon">🎉</span>
+        <div class="text-left">
+          <p class="text-xs font-black text-spriteGreen-400 leading-tight" id="claimedBadgeTitle">Cold Drink Coupon Unlocked!</p>
+          <p class="text-[10px] text-emerald-300">1-Time Scratch Completed on this Device</p>
+        </div>
+      </div>
+
+      <!-- Perforated Physical Ticket Body -->
+      <div class="relative w-full rounded-2xl bg-slate-900 border-2 border-spriteGreen-500 shadow-[0_12px_36px_-8px_rgba(0,200,83,0.3)] overflow-hidden">
+        
+        <!-- Scallop Ticket Cutouts -->
+        <div class="ticket-scallop-left"></div>
+        <div class="ticket-scallop-right"></div>
+
+        <!-- Ticket Top Section -->
+        <div class="p-4 sm:p-5 bg-gradient-to-b from-emerald-950 via-slate-900 to-slate-900 border-b border-dashed border-spriteGreen-600">
+          
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-1.5">
+              <span class="text-lg">🥤</span>
+              <div>
+                <h3 class="text-xs font-black text-spriteGreen-400 uppercase tracking-wider">Scratch &amp; Win Offer</h3>
+                <p class="text-[9px] font-semibold text-thumsUpRed-500">Valid on All Cold Drinks</p>
+              </div>
+            </div>
+
+            <!-- Holographic Security Seal -->
+            <div class="shimmer-badge w-12 h-12 rounded-full border border-spriteGreen-400 bg-gradient-to-br from-spriteGreen-600 via-thumsUpBlue-800 to-thumsUpRed-600 flex flex-col items-center justify-center shadow-xs text-center">
+              <span class="text-xs">🥤</span>
               <span class="text-[7px] font-extrabold text-white uppercase leading-none mt-0.5">VERIFIED</span>
             </div>
           </div>
@@ -414,7 +788,7 @@
             <div>
               <p class="text-[11px] font-bold text-sky-300 leading-tight">How to Redeem:</p>
               <p class="text-[10px] text-sky-200 mt-0.5 leading-relaxed">
-                Present this screen directly at the <strong>Cold Drink Billing Counter</strong> during checkout to deduct this cashback from your Thums Up / Sprite purchase.
+                Present this screen directly at the <strong>Cold Drink Billing Counter</strong> during checkout to deduct this offer from your cold drink purchase.
               </p>
             </div>
           </div>
@@ -440,8 +814,8 @@
 
       <div class="bg-slate-900/90 border border-spriteGreen-500/50 rounded-xl p-2.5 shadow-2xs">
         <span class="text-xl">🥤</span>
-        <h4 class="text-[11px] font-bold text-spriteGreen-400 mt-0.5">Chilled Soda</h4>
-        <p class="text-[10px] text-slate-400">Thums Up &amp; Sprite</p>
+        <h4 class="text-[11px] font-bold text-spriteGreen-400 mt-0.5">Chilled Drinks</h4>
+        <p class="text-[10px] text-slate-400">All Cold Drinks Offer</p>
       </div>
 
       <div class="bg-slate-900/90 border border-spriteGreen-500/50 rounded-xl p-2.5 shadow-2xs">
@@ -473,7 +847,7 @@
       <div class="flex items-center gap-1 font-medium">
         <span>© Cold Drink Scheme</span>
         <span>•</span>
-        <span class="text-spriteGreen-400 font-bold">Thums Up &amp; Sprite Cashback</span>
+        <span class="text-spriteGreen-400 font-bold">Scratch and Win Offer on All Cold Drinks</span>
       </div>
       
       <!-- Demo Reset Button -->
@@ -494,8 +868,9 @@
       // ========================================================
       // 1. STORAGE KEYS & CONSTANTS
       // ========================================================
-      const STORAGE_KEY_USER_COUPON = 'cd_sptu_user_claimed_coupon_v1';
-      const OOPS_TEXT = "Oops better luck next time";
+      const STORAGE_KEY_USER_COUPON = 'cd_sptu_user_claimed_coupon_v3';
+      const STORAGE_KEY_CAMPAIGN_STATE = 'cd_sptu_campaign_state_v3';
+      const OOPS_TEXT = "Better luck next time";
 
       // ========================================================
       // 2. WEB AUDIO SYNTHESIZER
@@ -582,24 +957,69 @@
       }
 
       // ========================================================
-      // 3. CASHBACK REWARD ENGINE
-      // Exact Probability according to 10 people:
-      // - 4 people (40%): Oops better luck next time
-      // - 3 people (30%): ₹10
-      // - 2 people (20%): ₹20
-      // - 1 person (10%): ₹30
+      // 3. CASHBACK REWARD ENGINE (100 TOTAL SCRATCH POOL)
+      // Pool Breakdown:
+      // - 10 Better luck next time (Triggers every 8th scratch: 8, 16, 24, 32, 40, 48, 56, 64, 72, 80)
+      // - 10 times: Rs 5
+      // - 40 times: Rs 10
+      // - 20 times: Rs 15
+      // - 15 times: Rs 20
+      // - 5 times : Rs 30
+      // Shuffled randomly across the other 90 scratch slots
       // ========================================================
-      function generateReward() {
-        const roll = Math.random();
-        if (roll < 0.40) {
-          return OOPS_TEXT;
-        } else if (roll < 0.70) {
-          return 10;
-        } else if (roll < 0.90) {
-          return 20;
-        } else {
-          return 30;
+      function getOrCreateCampaignState() {
+        let state = null;
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY_CAMPAIGN_STATE);
+          if (raw) state = JSON.parse(raw);
+        } catch (e) {}
+
+        if (!state || !Array.isArray(state.cashPool)) {
+          // Construct 90 cash prizes
+          const cashPool = [
+            ...Array(10).fill(5),
+            ...Array(40).fill(10),
+            ...Array(20).fill(15),
+            ...Array(15).fill(20),
+            ...Array(5).fill(30)
+          ];
+
+          // Fisher-Yates Randomization
+          for (let i = cashPool.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [cashPool[i], cashPool[j]] = [cashPool[j], cashPool[i]];
+          }
+
+          state = {
+            scratchCount: 0,
+            lossCount: 0,
+            cashPool: cashPool,
+            poolIndex: 0
+          };
+          localStorage.setItem(STORAGE_KEY_CAMPAIGN_STATE, JSON.stringify(state));
         }
+        return state;
+      }
+
+      function generateReward() {
+        const state = getOrCreateCampaignState();
+        state.scratchCount += 1;
+
+        let reward;
+        // Check if every 8th scratch up to 10 total loss instances
+        if (state.scratchCount % 8 === 0 && state.lossCount < 10) {
+          reward = OOPS_TEXT;
+          state.lossCount += 1;
+        } else if (state.poolIndex < state.cashPool.length) {
+          reward = state.cashPool[state.poolIndex];
+          state.poolIndex += 1;
+        } else {
+          // Fallback if pool goes beyond 100
+          reward = OOPS_TEXT;
+        }
+
+        localStorage.setItem(STORAGE_KEY_CAMPAIGN_STATE, JSON.stringify(state));
+        return reward;
       }
 
       function generateVoucherCode(amount) {
@@ -608,7 +1028,7 @@
         for (let i = 0; i < 4; i++) {
           randomStr += chars.charAt(Math.floor(Math.random() * chars.length));
         }
-        return `CD-SPTU-${randomStr}`;
+        return `CD-WIN-${randomStr}`;
       }
 
       function formatCurrentDateTime() {
@@ -662,7 +1082,7 @@
         ctx.save();
         ctx.globalCompositeOperation = 'source-over';
 
-        // Sprite Green Foil Gradient
+        // Foil Gradient
         const grad = ctx.createLinearGradient(0, 0, width, height);
         grad.addColorStop(0, '#00E676');
         grad.addColorStop(0.3, '#76FF03');
@@ -698,15 +1118,15 @@
         ctx.fillStyle = '#FFFFFF';
         ctx.font = 'bold 11px Poppins, sans-serif';
         ctx.textAlign = 'center';
-        ctx.fillText('👍 THUMS UP x SPRITE 🍋', cx, cy - 40);
+        ctx.fillText('🥤 COLD DRINKS OFFER 🍋', cx, cy - 40);
 
         ctx.font = '900 18px Poppins, sans-serif';
         ctx.fillStyle = '#76FF03';
-        ctx.fillText('COLD DRINK', cx, cy - 12);
+        ctx.fillText('SCRATCH & WIN', cx, cy - 12);
 
         ctx.font = 'bold 10px Poppins, sans-serif';
         ctx.fillStyle = '#FFFFFF';
-        ctx.fillText('CASHBACK SCHEME', cx, cy + 6);
+        ctx.fillText('ALL COLD DRINKS', cx, cy + 6);
 
         // Scratch Prompt Pill on Canvas
         ctx.fillStyle = '#0F172A';
@@ -859,11 +1279,11 @@
         const isWin = typeof assignedAmount === 'number';
 
         if (isWin) {
-          playCelebrationFanfare(assignedAmount === 30);
-          triggerConfetti(assignedAmount === 30);
+          playCelebrationFanfare(assignedAmount >= 20);
+          triggerConfetti(assignedAmount >= 20);
           showToast(`Congratulations! You won ₹${assignedAmount} Cold Drink Cashback!`, '🎉');
         } else {
-          showToast('Oops! Better luck next time!', '🥤');
+          showToast('Better luck next time!', '🥤');
         }
 
         setTimeout(() => {
@@ -1066,8 +1486,9 @@
         if (resetDemoBtn) {
           resetDemoBtn.addEventListener('click', () => {
             localStorage.removeItem(STORAGE_KEY_USER_COUPON);
+            localStorage.removeItem(STORAGE_KEY_CAMPAIGN_STATE);
             isCardRevealed = false;
-            showToast('Device demo reset. Reloading scratch card...', '🔄');
+            showToast('Device demo & campaign reset. Reloading...', '🔄');
             setTimeout(() => {
               window.location.reload();
             }, 600);
